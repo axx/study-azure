@@ -1,5 +1,9 @@
 package main
 
+// For this script to work, the user must:
+// * login to Azure
+// * have Storage Blob Data Contributor role on the storage account
+
 import (
 	"context"
 	"fmt"
@@ -30,7 +34,7 @@ func main() {
 	credential, err := azidentity.NewDefaultAzureCredential(nil)
 	handleError(err)
 
-	blobServiceUrl := "https://ststudy.blob.core.windows.net"
+	const blobServiceUrl = "https://ststudy.blob.core.windows.net"
 	client, err := azblob.NewClient(blobServiceUrl, credential, nil)
 	handleError(err)
 
